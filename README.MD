@@ -55,6 +55,11 @@ kubectl port-forward svc/nginx-service 8080:80
 ```
 Then open http://localhost:8080 in your browser.
 
+## Also 
+The database shows the posts/media even after a pod restarts/crashes ensuring persistence.
+
+![db](db.png)
+
 # PART 2: Monitoring & Alerting
 
 This section covers how monitoring and alerting are implemented for the WordPress application.
