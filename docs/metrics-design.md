@@ -1,5 +1,5 @@
 # Metrics Design Document
-This document defines the required production-grade metrics for WordPress, Apache, and Nginx along with their purpose and usage. These metrics are essential for monitoring performance, reliability, and system health in a real-world deployment.
+This document defines the required production-grade metrics for WordPress, Nginx along with their purpose and usage. These metrics are essential for monitoring performance, reliability, and system health in a real-world deployment.
 
 ---
 
