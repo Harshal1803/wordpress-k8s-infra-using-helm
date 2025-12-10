@@ -120,6 +120,9 @@ HighNginx5xxRate
 These alerts demonstrate the system’s ability to detect performance and server-side errors.
 
 ![kube](kube.png)
+
+## For more details on metrics and alerting, refer to the [metrics design document](docs/metrics-design.md).
+
 ## Final Output
 - After deployment, the system provides:
 - A fully functional WordPress website on Kubernetes
