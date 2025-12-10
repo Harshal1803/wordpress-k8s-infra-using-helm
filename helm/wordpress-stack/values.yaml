@@ -1,0 +1,18 @@
+images:
+  nginx: "hxrshal/openresty-nginx:fixed"
+  wordpress: "hxrshal/wordpress:latest"
+  mysql: "hxrshal/mysql:latest"
+
+mysql:
+  rootPassword: "rootpassword"
+  user: "wpuser"
+  password: "wppassword"
+  database: "wordpress"
+
+service:
+  type: LoadBalancer
+  nginxPort: 80
+
+serviceAccount:
+  create: false
+  name: ""

@@ -1,0 +1,10 @@
+apiVersion: v2
+name: monitoring-stack
+description: Monitoring and alerting stack for WordPress Kubernetes setup
+type: application
+version: 0.1.0
+
+dependencies:
+  - name: kube-prometheus-stack
+    version: "80.0.0"
+    repository: "https://prometheus-community.github.io/helm-charts"

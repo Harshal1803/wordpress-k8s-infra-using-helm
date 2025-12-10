@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+spec:
+  replicas: 2   
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+        - name: wordpress
+          image: {{ .Values.images.wordpress }}
+          env:
+            - name: WORDPRESS_DB_HOST
+              value: "mysql:3306"
+            - name: WORDPRESS_DB_USER
+              value: {{ .Values.mysql.user | quote }}
+            - name: WORDPRESS_DB_PASSWORD
+              value: {{ .Values.mysql.password | quote }}
+            - name: WORDPRESS_DB_NAME
+              value: {{ .Values.mysql.database | quote }}
+            - name: WORDPRESS_SITE_URL
+              value: "http://localhost:8080"
+            - name: PHP_INI_VALUE
+              value: "session.gc_maxlifetime=86400"
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: wp-data
+              mountPath: /var/www/html
+      volumes:
+        - name: wp-data
+          persistentVolumeClaim:
+            claimName: wp-data-pvc

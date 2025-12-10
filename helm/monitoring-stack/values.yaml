@@ -1,0 +1,14 @@
+kube-prometheus-stack:
+  grafana:
+    adminUser: "grafan"
+    adminPassword: "grafan"
+
+    service:
+      type: NodePort
+      nodePort: 32000   
+
+    defaultDashboardsEnabled: true
+
+  prometheus:
+    prometheusSpec:
+      scrapeInterval: "30s"

@@ -1,0 +1,27 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: app-alerts
+  labels:
+    release: monitoring
+spec:
+  groups:
+    - name: wordpress-app-rules
+      rules:
+        - alert: HighWordpressCpuUsage
+          expr: sum(rate(container_cpu_usage_seconds_total{pod=~"wordpress-.*"}[5m])) > 0.5
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High CPU usage for WordPress pods"
+            description: "WordPress pods CPU usage > 0.5 cores for 5 minutes."
+
+        - alert: HighNginx5xxRate
+          expr: sum(rate(nginx_http_requests_total{status=~"5.."}[5m])) > 1
+          for: 2m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High 5xx rate on nginx"
+            description: "Nginx is returning more than 1 5xx response per second."
